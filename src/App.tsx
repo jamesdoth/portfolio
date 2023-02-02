@@ -1,4 +1,4 @@
-import { scrollToSection } from './scroll';
+import ScrollButton from './components/ScrollButton';
 
 function App() {
   return (
@@ -6,17 +6,13 @@ function App() {
       <div id='first-section' className='flex h-screen justify-center items-center'>
         <div className='flex flex-col'>
           <p className='text-center text-gray-200 text-9xl mb-4'>Hello World</p>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded w-48 mx-auto" onClick={() => {
-            scrollToSection('second-section');
-          }}>Click me</button>
+          <ScrollButton id='first-section-button' section='second-section' label='Click me' />
         </div>
       </div>
       <div id='second-section' className='flex h-screen justify-center items-center'>
         <div className='flex flex-col'>
           <p className='text-center text-gray-200 text-9xl mb-4'>Hello World</p>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded w-48 mx-auto" onClick={() => {
-            scrollToSection('first-section');
-          }}>Click me</button>
+          <ScrollButton id='second-section-button' section='first-section' label='Click me' />
         </div>
       </div>
     </body>
