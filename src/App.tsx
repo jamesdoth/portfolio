@@ -5,7 +5,7 @@ function App() {
     <body className='min-h-screen bg-slate-800'>
       <div id='first-section' className='flex h-screen justify-center items-center'>
         <div className='flex flex-col'>
-          <p className='text-center text-gray-200 text-7xl mb-4'>J i m &nbsp;&nbsp; H a n</p>
+          <p className="text-center text-gray-200 text-7xl mb-4 tracking-3">Jim Han</p>
           <ScrollButton id='first-section-button' section='second-section' label='Click me' />
         </div>
       </div>
