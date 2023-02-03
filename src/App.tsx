@@ -5,8 +5,10 @@ function App() {
     <body className='min-h-screen bg-slate-800'>
       <div id='first-section' className='flex h-screen justify-center items-center'>
         <div className='flex flex-col'>
-          <p className="text-center text-gray-200 text-7xl mb-4 tracking-3">Jim Han</p>
-          <ScrollButton id='first-section-button' section='second-section' label='Click me' />
+          <p className="text-center text-gray-200 text-7xl mb-44 tracking-3 z-10">Jim Han</p>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <ScrollButton id='first-section-button' section='second-section' label='Click me' />
+          </div>
         </div>
       </div>
       <div id='second-section' className='flex h-screen justify-center items-center'>
