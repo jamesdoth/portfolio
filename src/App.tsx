@@ -6,9 +6,7 @@ function App() {
       <div id='first-section' className='flex h-screen justify-center items-center'>
         <div className='flex flex-col mb-16'>
           <p className="text-center text-gray-200 max-w-none text-7xl mb-12 tracking-3 z-10">Jim Han</p>
-          <div className="flex items-center justify-center">
-            <ScrollButton id='first-section-button' section='second-section' label='Click me' />
-          </div>
+          <ScrollButton id='first-section-button' section='second-section' label='Click me' />
         </div>
       </div>
       <div id='second-section' className='flex h-screen justify-center items-center'>
