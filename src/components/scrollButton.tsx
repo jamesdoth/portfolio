@@ -9,7 +9,7 @@ interface Props {
 
 const ScrollButton: React.FC<Props> = ({ id, section, label }) => {
   return (
-    <button className="bg-blue-500 text-white px-4 py-2 rounded w-48 mx-auto" onClick={() => {
+    <button className="border-2 border-red-600 bg-blue-500 text-white px-4 py-2 rounded w-48 mx-auto" onClick={() => {
       scrollToSection(section);
     }}>
       {label}
