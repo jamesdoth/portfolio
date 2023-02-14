@@ -94,7 +94,6 @@ function Game() {
     setScores({ X: 0, O: 0 });
     localStorage.setItem('scores', JSON.stringify({ X: 0, O: 0 }));
     resetBoard();
-    changePlayer();
   };
 
   return (
@@ -123,12 +122,20 @@ function Game() {
           <p className='text-white mt-2'>
             Player O wins: <span>{scores['O']}</span>
           </p>
-          <button
-            className='text-white mt-2 border-2 rounded p-1'
-            onClick={resetScore}
-          >
-            Reset
-          </button>
+          <div className='flex justify-center gap-3'>
+            <button
+              className='text-white mt-2 border-2 rounded p-1'
+              onClick={resetScore}
+            >
+              Reset
+            </button>
+            <button
+              className='text-white mt-2 border-2 rounded p-1'
+              onClick={changePlayer}
+            >
+              Change Player
+            </button>
+          </div>
         </div>
       </div>
     </div>
