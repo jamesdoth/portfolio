@@ -97,12 +97,12 @@ function Game() {
   };
 
   return (
-    <div className='h-full p-8 text-slate-800 bg-gradient-to-r from-cyan-500 to-blue-500'>
+    <div className='border-2 border-blue-300 p-6'>
       <h1 className='text-center text-5xl mb-4 font-display text-white'>
         Tic Tac Toe
       </h1>
-      <div>
-        <div className='grid grid-cols-3 gap-3 mx-auto w-96'>
+      <div className='flex flex-col items-center'>
+        <div className='grid grid-cols-3 w-56'>
           {gameState.map((player, index) => (
             <Square
               key={index}

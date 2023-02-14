@@ -12,7 +12,7 @@ function Square({ index, onClick, player }: Props) {
   return (
     <div
       data-cell-index={index}
-      className={`h-36 border-solid border-4 border-slate-200 font-display text-7xl text-center flex justify-center items-center cursor-pointer ${hoverStyle}`}
+      className={`h-20 border-solid border-2 border-slate-200 font-display text-5xl text-center flex justify-center items-center cursor-pointer ${hoverStyle}`}
       {...{ onClick }}
     >
       <span
