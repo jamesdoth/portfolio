@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-
-import Square from "./square";
+import { useState, useEffect } from 'react';
+import Square from './square';
 
 type Scores = {
   [key: string]: number;
 };
 
-const INITIAL_GAME_STATE = ["", "", "", "", "", "", "", "", ""];
+const INITIAL_GAME_STATE = ['', '', '', '', '', '', '', '', ''];
 const INITIAL_SCORES: Scores = { X: 0, O: 0 };
 const WINNING_COMBOS = [
   [0, 1, 2],
@@ -21,11 +20,11 @@ const WINNING_COMBOS = [
 
 function Game() {
   const [gameState, setGameState] = useState(INITIAL_GAME_STATE);
-  const [currentPlayer, setCurrentPlayer] = useState("X");
+  const [currentPlayer, setCurrentPlayer] = useState('X');
   const [scores, setScores] = useState(INITIAL_SCORES);
 
   useEffect(() => {
-    const storedScores = localStorage.getItem("scores");
+    const storedScores = localStorage.getItem('scores');
     if (storedScores) {
       setScores(JSON.parse(storedScores));
     }
@@ -48,92 +47,63 @@ function Game() {
     const newScores = { ...scores };
     newScores[currentPlayer] = newPlayerScore;
     setScores(newScores);
-    localStorage.setItem("scores", JSON.stringify(newScores));
+    localStorage.setItem('scores', JSON.stringify(newScores));
 
     resetBoard();
   };
 
   const handleDraw = () => {
-    window.alert("The game ended in a draw");
+    window.alert('The game ended in a draw');
 
     resetBoard();
   };
 
   const checkForWinner = () => {
-    let roundWon = false;
-
-    for (let i = 0; i < WINNING_COMBOS.length; i++) {
-      const winCombo = WINNING_COMBOS[i];
-
-      let a = gameState[winCombo[0]];
-      let b = gameState[winCombo[1]];
-      let c = gameState[winCombo[2]];
-
-      if ([a, b, c].includes("")) {
-        continue;
-      }
-
-      if (a === b && b === c) {
-        roundWon = true;
-        break;
-      }
-    }
+    const roundWon = WINNING_COMBOS.some((winCombo) => {
+      const [a, b, c] = winCombo.map((i) => gameState[i]);
+      return a && b === a && c === a;
+    });
 
     if (roundWon) {
-      setTimeout(() => handleWin(), 500);
+      setTimeout(handleWin, 500);
       return;
     }
 
-    if (!gameState.includes("")) {
-      setTimeout(() => handleDraw(), 500);
+    if (!gameState.includes('')) {
+      setTimeout(handleDraw, 500);
       return;
     }
 
     changePlayer();
   };
 
-  const changePlayer = () => {
-    setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
-  };
+  const changePlayer = () =>
+    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
 
   const handleCellClick = (event: any) => {
-    const cellIndex = Number(event.target.getAttribute("data-cell-index"));
-
-    const currentValue = gameState[cellIndex];
-    if (currentValue) {
-      return;
-    }
-
-    const newValues = [...gameState];
-    newValues[cellIndex] = currentPlayer;
-    setGameState(newValues);
+    const cellIndex = Number(event.target.getAttribute('data-cell-index'));
+    if (gameState[cellIndex]) return;
+    setGameState([
+      ...gameState.slice(0, cellIndex),
+      currentPlayer,
+      ...gameState.slice(cellIndex + 1),
+    ]);
   };
 
-//   const resetScore = () => {
-//     const resetPlayerScore = 0
-//     scores["X"] = resetPlayerScore
-//     scores["O"] = resetPlayerScore
-//     const newScores = { ...scores };
-//     newScores[currentPlayer] = resetPlayerScore
-//     setScores(newScores);
-//     localStorage.setItem("scores", JSON.stringify(newScores))
-
-//     resetBoard();
-//   }
-
-const resetScore = () => {
+  const resetScore = () => {
     setScores({ X: 0, O: 0 });
-    localStorage.setItem("scores", JSON.stringify({ X: 0, O: 0 }));
+    localStorage.setItem('scores', JSON.stringify({ X: 0, O: 0 }));
     resetBoard();
+    changePlayer();
   };
 
   return (
-    <div className="h-full p-8 text-slate-800 bg-gradient-to-r from-cyan-500 to-blue-500">
-      <h1 className="text-center text-5xl mb-4 font-display text-white">
+    <div className='h-full p-8 text-slate-800 bg-gradient-to-r from-cyan-500 to-blue-500'>
+      <h1 className='text-center text-5xl mb-4 font-display text-white'>
         Tic Tac Toe
       </h1>
       <div>
-        <div className="grid grid-cols-3 gap-3 mx-auto w-96">
+        <div className='grid grid-cols-3 gap-3 mx-auto w-96'>
           {gameState.map((player, index) => (
             <Square
               key={index}
@@ -143,17 +113,22 @@ const resetScore = () => {
           ))}
         </div>
 
-        <div className="flexmx-auto w-96 text-2xl text-serif">
-          <p className="text-white mt-2">
+        <div className='flexmx-auto w-96 text-2xl text-serif'>
+          <p className='text-white mt-2'>
             Next Player: <span>{currentPlayer}</span>
           </p>
-          <p className="text-white mt-2">
-            Player X wins: <span>{scores["X"]}</span>
+          <p className='text-white mt-2'>
+            Player X wins: <span>{scores['X']}</span>
           </p>
-          <p className="text-white mt-2">
-            Player O wins: <span>{scores["O"]}</span>
+          <p className='text-white mt-2'>
+            Player O wins: <span>{scores['O']}</span>
           </p>
-          <button className="text-white mt-2 border-2 rounded p-1" onClick={resetScore}>Reset</button>
+          <button
+            className='text-white mt-2 border-2 rounded p-1'
+            onClick={resetScore}
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>
