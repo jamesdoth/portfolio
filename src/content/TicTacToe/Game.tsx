@@ -109,16 +109,23 @@ function Game() {
     setGameState(newValues);
   };
 
-  const resetScore = () => {
-    const resetPlayerScore = 0
-    scores["..."] = resetPlayerScore
-    const newScores = { ...scores };
-    newScores[currentPlayer] = resetPlayerScore
-    setScores(newScores);
-    localStorage.setItem("scores", JSON.stringify(newScores))
+//   const resetScore = () => {
+//     const resetPlayerScore = 0
+//     scores["X"] = resetPlayerScore
+//     scores["O"] = resetPlayerScore
+//     const newScores = { ...scores };
+//     newScores[currentPlayer] = resetPlayerScore
+//     setScores(newScores);
+//     localStorage.setItem("scores", JSON.stringify(newScores))
 
+//     resetBoard();
+//   }
+
+const resetScore = () => {
+    setScores({ X: 0, O: 0 });
+    localStorage.setItem("scores", JSON.stringify({ X: 0, O: 0 }));
     resetBoard();
-  }
+  };
 
   return (
     <div className="h-full p-8 text-slate-800 bg-gradient-to-r from-cyan-500 to-blue-500">
