@@ -1,35 +1,45 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Game from '../content/TicTacToe/Game';
 
 function Card() {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleCardClick = () => {
-    setIsOpen(!isOpen);
+    if (isOpen) {
+      return;
+    }
+    setIsOpen(true);
   };
 
   const handleExpandedCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (ref.current && !ref.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  });
+
   return (
-    <div className='bg-slate-500'>
+    <div className='bg-slate-500' ref={ref}>
       <motion.div
         onClick={handleCardClick}
         className='flex flex-col justify-center items-center p-4'
       >
-        <motion.h2 className='text-white'>Hello World</motion.h2>
+        <motion.h2 className='text-white'>TicTacToe</motion.h2>
         {isOpen && (
           <motion.div className='w-96' onClick={handleExpandedCardClick}>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
-              repudiandae voluptas commodi hic nisi neque inventore natus.
-              Saepe, incidunt tempora?
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Excepturi, temporibus.
-            </p>
+            <Game />
           </motion.div>
         )}
       </motion.div>

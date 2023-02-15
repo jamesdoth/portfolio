@@ -40,7 +40,7 @@ function App() {
         className='border-2 border-green-600 flex h-screen justify-center items-center'
       >
         <div className='border-2 border-red-600 flex flex-col'>
-          <Game />
+          <Card />
           <ScrollButton
             id='third-section-button'
             section='fourth-section'
@@ -52,8 +52,8 @@ function App() {
         id='fourth-section'
         className='border-2 border-green-600 flex flex-col h-screen justify-center items-center'
       >
-        <div className='border-2 border-red-600 flex flex-col mb-12'>
-          <Card />
+        <div className='border-2 border-red-600 flex flex-col mb-12 text-white'>
+          Contact
         </div>
         <ScrollButton
           id='fourth-section-button'
