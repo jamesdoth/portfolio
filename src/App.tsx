@@ -1,4 +1,5 @@
 import ScrollButton from './components/ScrollButton';
+import Card from './components/Card';
 import Game from './content/TicTacToe/Game';
 
 function App() {
@@ -49,18 +50,16 @@ function App() {
       </div>
       <div
         id='fourth-section'
-        className='border-2 border-green-600 flex h-screen justify-center items-center'
+        className='border-2 border-green-600 flex flex-col h-screen justify-center items-center'
       >
-        <div className='border-2 border-red-600 flex flex-col'>
-          <p className='border-2 border-green-600 text-center text-gray-200 text-3xl mb-4'>
-            Fourth Section
-          </p>
-          <ScrollButton
-            id='fourth-section-button'
-            section='first-section'
-            label='Click me'
-          />
+        <div className='border-2 border-red-600 flex flex-col mb-12'>
+          <Card />
         </div>
+        <ScrollButton
+          id='fourth-section-button'
+          section='first-section'
+          label='Click me'
+        />
       </div>
     </body>
   );
