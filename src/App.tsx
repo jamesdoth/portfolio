@@ -40,7 +40,7 @@ function App() {
         className='border-2 border-green-600 flex h-screen justify-center items-center'
       >
         <div className='border-2 border-red-600 flex flex-col'>
-          <Card />
+          <Card title='TicTacToe' content={<Game />} />
           <ScrollButton
             id='third-section-button'
             section='fourth-section'

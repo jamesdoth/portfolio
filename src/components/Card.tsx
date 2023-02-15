@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import Game from '../content/TicTacToe/Game';
 
-function Card() {
+interface CardProps {
+  title: string;
+  content: React.ReactNode;
+}
+
+function Card({ title, content }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -36,10 +40,10 @@ function Card() {
         onClick={handleCardClick}
         className='flex flex-col justify-center items-center p-4'
       >
-        <motion.h2 className='text-white'>TicTacToe</motion.h2>
+        {!isOpen && <motion.h2 className='text-white'>{title}</motion.h2>}
         {isOpen && (
           <motion.div className='w-96' onClick={handleExpandedCardClick}>
-            <Game />
+            {content}
           </motion.div>
         )}
       </motion.div>
