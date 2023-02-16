@@ -38,7 +38,9 @@ function Card({ title, content }: CardProps) {
     <div className='bg-slate-500' ref={ref}>
       <motion.div
         onClick={handleCardClick}
-        className='flex flex-col justify-center items-center p-4'
+        className={`flex flex-col justify-center items-center p-4 ${
+          isOpen ? '' : 'cursor-pointer'
+        }`}
       >
         {!isOpen && (
           /* The h2 element might be intercepting the click event and 
