@@ -44,7 +44,7 @@ function App() {
           <Card title='TicTacToe' content={<Game />} />
         </div>
         <div className='border-2 border-red-600 flex flex-col mb-12'>
-          <Card title='My Card' content={<Survey />} />
+          <Card title='Survey' content={<Survey />} />
         </div>
         <div>
           <ScrollButton
