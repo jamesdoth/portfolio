@@ -1,6 +1,7 @@
 import ScrollButton from './components/ScrollButton';
 import Card from './components/Card';
 import Game from './content/TicTacToe/Game';
+import { Survey } from './content/Survey/Survey';
 
 function App() {
   return (
@@ -37,10 +38,15 @@ function App() {
       </div>
       <div
         id='third-section'
-        className='border-2 border-green-600 flex h-screen justify-center items-center'
+        className='border-2 border-green-600 flex flex-col h-screen justify-center items-center'
       >
-        <div className='border-2 border-red-600 flex flex-col'>
+        <div className='border-2 border-red-600 flex flex-col mb-12'>
           <Card title='TicTacToe' content={<Game />} />
+        </div>
+        <div className='border-2 border-red-600 flex flex-col mb-12'>
+          <Card title='My Card' content={<Survey />} />
+        </div>
+        <div>
           <ScrollButton
             id='third-section-button'
             section='fourth-section'

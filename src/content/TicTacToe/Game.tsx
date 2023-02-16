@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Square from './square';
+import Square from './Square';
 
 type Scores = {
   [key: string]: number;

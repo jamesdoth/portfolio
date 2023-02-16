@@ -43,7 +43,7 @@ function Card({ title, content }: CardProps) {
         }`}
       >
         {!isOpen && (
-          /* The h2 element might be intercepting the click event and 
+          /* The h2 element is intercepting the click event and 
         preventing it from bubbling up to the motion.div element that 
         has the handleCardClick click handler. The pointer-events-none 
         disables pointer events for that element. This should allow the 
