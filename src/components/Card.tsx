@@ -40,9 +40,18 @@ function Card({ title, content }: CardProps) {
         onClick={handleCardClick}
         className='flex flex-col justify-center items-center p-4'
       >
-        {!isOpen && <motion.h2 className='text-white'>{title}</motion.h2>}
+        {!isOpen && (
+          /* The h2 element might be intercepting the click event and 
+        preventing it from bubbling up to the motion.div element that 
+        has the handleCardClick click handler. The pointer-events-none 
+        disables pointer events for that element. This should allow the 
+        click event to propagate to the parent motion.div element. */
+          <motion.h2 className='text-white pointer-events-none'>
+            {title}
+          </motion.h2>
+        )}
         {isOpen && (
-          <motion.div className='w-96' onClick={handleExpandedCardClick}>
+          <motion.div onClick={handleExpandedCardClick} className='w-96'>
             {content}
           </motion.div>
         )}
