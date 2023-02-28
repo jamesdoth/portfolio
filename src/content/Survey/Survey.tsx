@@ -16,7 +16,7 @@ export function Survey() {
   return isSubmitted ? (
     <div className='flex flex-col items-center bg-slate-900 p-10 rounded-3xl'>
       <img src='/illus-ty.svg' className='mb-9'></img>
-      <p className='text-center rounded-3xl bg-slate-800 text-orange-500 p-1 w-52 mb-5'>
+      <p className='text-center rounded-3xl font-normal bg-slate-800 text-orange-500 p-1 w-52 mb-5'>
         You selected {selectedRating} out of 5
       </p>
       <h1 className=' text-slate-200 text-2xl font-semibold mb-3'>
