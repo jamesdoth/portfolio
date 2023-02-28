@@ -14,12 +14,15 @@ export function Survey() {
   };
 
   return isSubmitted ? (
-    <div className='flex flex-col items-center border-2 bg-slate-900 p-10 rounded-3xl'>
-      <img src='/illus-ty.svg' className='mb-3'></img>
-      <h1 className=' text-slate-200 text-2xl font-semibold mb-2'>
+    <div className='flex flex-col items-center bg-slate-900 p-10 rounded-3xl'>
+      <img src='/illus-ty.svg' className='mb-9'></img>
+      <p className='text-center rounded-3xl bg-slate-800 text-orange-500 p-1 w-52 mb-5'>
+        You selected {selectedRating} out of 5
+      </p>
+      <h1 className=' text-slate-200 text-2xl font-semibold mb-3'>
         Thank You!
       </h1>
-      <p className='text-slate-500 mb-5 text-center'>
+      <p className='text-slate-500 mb-2 text-center'>
         We appreciate you taking the time to give a rating. If you ever need
         more support, don't hesitate to get in touch!
       </p>
