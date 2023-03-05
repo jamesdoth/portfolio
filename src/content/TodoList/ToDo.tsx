@@ -23,11 +23,11 @@ export const Todo = ({ title, id, onDelete }: TodoProps) => {
         type='checkbox'
         checked={isCompleted}
         onChange={handleComplete}
-        className='form-checkbox h-6 w-6 text-purple-600'
+        className='form-checkbox h-6 w-6'
       />
       <p
         className={`ml-3 text-lg font-medium ${
-          isCompleted ? 'line-through text-gray-500' : ''
+          isCompleted ? 'line-through text-purple-600' : ''
         }`}
       >
         {title}

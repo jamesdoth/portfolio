@@ -48,7 +48,7 @@ function App() {
           <Card title='Survey' content={<Survey />} />
         </div>
         <div className='border-2 border-red-600 flex flex-col mb-12'>
-          <Card title='Todo' content={<TodoList />} />
+          <Card title='Todo List' content={<TodoList />} />
         </div>
         <div>
           <ScrollButton
