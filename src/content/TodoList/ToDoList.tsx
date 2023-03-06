@@ -35,12 +35,12 @@ export const TodoList = () => {
           type='text'
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className='form-input w-full text-left pl-2'
+          className='form-input w-full rounded-lg text-left pl-2'
           placeholder='Add a new todo'
         />
         <button
           onClick={handleAddTodo}
-          className='ml-2 bg-blue-500 text-white px-4 py-2 rounded'
+          className='ml-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition'
         >
           Add
         </button>
