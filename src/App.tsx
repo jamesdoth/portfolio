@@ -3,6 +3,7 @@ import Card from './components/Card';
 import Game from './content/TicTacToe/Game';
 import { Survey } from './content/Survey/Survey';
 import { TodoList } from './content/TodoList/ToDoList';
+import WeatherApp from './content/Weather/Weather';
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
         </div>
         <div className='border-2 border-red-600 flex flex-col mb-12'>
           <Card title='Todo List' content={<TodoList />} />
+        </div>
+        <div className='border-2 border-red-600 flex flex-col mb-12'>
+          <Card title='Weather App' content={<WeatherApp />} />
         </div>
         <div>
           <ScrollButton
