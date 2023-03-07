@@ -1,7 +1,24 @@
-import React, { useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 
 const WeatherApp = () => {
-  const [weatherData, setWeatherData] = useState<any>(null);
-  const [location, setLocation] = useState<string>('');
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`placeholder api`);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>Weather App</h1>
+    </div>
+  );
 };
+
+export default WeatherApp;
