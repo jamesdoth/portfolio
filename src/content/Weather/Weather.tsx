@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 interface WeatherData {
@@ -11,6 +11,13 @@ interface WeatherData {
 }
 
 const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
+
+const WeatherApp = () => {
+  const [location, setLocation] = useState('');
+  const [WeatherData, setWeatherData] = useState<WeatherData | null>(null);
+
+  const fetchWeatherData = async () => {};
+};
 
 // const WeatherApp = () => {
 //   useEffect(() => {
