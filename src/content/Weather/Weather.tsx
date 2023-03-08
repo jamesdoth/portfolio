@@ -69,11 +69,21 @@ const WeatherApp = () => {
         </button>
       </form>
       {weatherData && (
-        <div>
-          <h1>{weatherData.name}</h1>
-          <h2>{Math.round(weatherData.main.temp)} °F</h2>
-          <p>Feels like: {Math.round(weatherData.main.feels_like)} °F</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
+        <div className='bg-slate-800 px-8 py-3 mb-7 -mt-4 rounded-lg'>
+          <h1 className='text-2xl font-bold text-orange-500'>
+            {weatherData.name}
+          </h1>
+          <h2 className='text-4xl font-bold'>
+            {Math.round(weatherData.main.temp)} °F
+          </h2>
+          <p className='font-medium text-lg'>
+            <span className='text-orange-500'>Feels like:</span>{' '}
+            {Math.round(weatherData.main.feels_like)} °F
+          </p>
+          <p className='font-medium text-lg -mt-2'>
+            <span className='text-orange-500'>Humidity:</span>{' '}
+            {weatherData.main.humidity}%
+          </p>
         </div>
       )}
     </div>
