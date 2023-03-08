@@ -37,14 +37,15 @@ const WeatherApp = () => {
   };
 
   return (
-    <div>
-      <h1>Weather App</h1>
-      <form onSubmit={handleSubmit}>
+    <div className='bg-slate-900 text-slate-200 flex flex-col justify-center items-center'>
+      <h1 className='text-4xl font-bold m-5 text-orange-500'>Weather App</h1>
+      <form onSubmit={handleSubmit} className='mb-8'>
         <input
           type='text'
           placeholder='Location or Zipcode'
           value={location}
           onChange={(e) => setLocation(e.target.value)}
+          className='px-4 py-2 bg-slate-800 text-slate-200 rounded-lg mr-4 focus:outline-none'
         />
         <button onClick={fetchWeatherData}>Get Weather</button>
       </form>
