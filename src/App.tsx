@@ -7,7 +7,7 @@ import WeatherApp from './content/Weather/Weather';
 
 function App() {
   return (
-    <body className='border-2 border-red-600 min-h-screen bg-slate-800'>
+    <div className='border-2 border-red-600 min-h-screen bg-slate-800'>
       <div
         id='first-section'
         className='border-2 border-green-600 flex h-screen justify-center items-center'
@@ -75,7 +75,7 @@ function App() {
           label='Click me'
         />
       </div>
-    </body>
+    </div>
   );
 }
 
