@@ -31,16 +31,23 @@ const WeatherApp = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetchWeatherData();
+  };
+
   return (
     <div>
       <h1>Weather App</h1>
-      <input
-        type='text'
-        placeholder='Location or Zipcode'
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-      />
-      <button onClick={fetchWeatherData}>Get Weather</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type='text'
+          placeholder='Location or Zipcode'
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <button onClick={fetchWeatherData}>Get Weather</button>
+      </form>
       {weatherData && (
         <div>
           <h1>{weatherData.name}</h1>
