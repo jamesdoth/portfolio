@@ -14,7 +14,7 @@ const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
 const WeatherApp = () => {
   const [location, setLocation] = useState('');
-  const [WeatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
   const fetchWeatherData = async () => {
     try {
@@ -30,28 +30,27 @@ const WeatherApp = () => {
       console.error(error);
     }
   };
+
+  return (
+    <div>
+      <h1>Weather App</h1>
+      <input
+        type='text'
+        placeholder='Location or Zipcode'
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+      />
+      <button onClick={fetchWeatherData}>Get Weather</button>
+      {weatherData && (
+        <div>
+          <h1>{weatherData.name}</h1>
+          <h2>{Math.round(weatherData.main.temp)} °F</h2>
+          <p>Feels like: {Math.round(weatherData.main.feels_like)} °F</p>
+          <p>Humidity: {weatherData.main.humidity}%</p>
+        </div>
+      )}
+    </div>
+  );
 };
 
-// const WeatherApp = () => {
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           `https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=-94.04&appid=${apiKey}`
-//         );
-//         console.log(response.data);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>Weather App</h1>
-//     </div>
-//   );
-// };
-
-// export default WeatherApp;
+export default WeatherApp;
