@@ -40,7 +40,7 @@ function App() {
       </div>
       <div
         id='third-section'
-        className='border-2 border-green-600 flex flex-col h-screen justify-center items-center'
+        className='border-2 border-green-600 flex gap-1 flex-wrap h-screen justify-center items-center'
       >
         <div className='border-2 border-red-600 flex flex-col mb-12'>
           <Card title='TicTacToe' content={<Game />} />
