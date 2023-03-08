@@ -16,7 +16,20 @@ const WeatherApp = () => {
   const [location, setLocation] = useState('');
   const [WeatherData, setWeatherData] = useState<WeatherData | null>(null);
 
-  const fetchWeatherData = async () => {};
+  const fetchWeatherData = async () => {
+    try {
+      let url = '';
+      if (/^\d+$/.test(location)) {
+        url = `https://api.openweathermap.org/data/2.5/weather?zip=${location}&units=imperial&appid=${apiKey}`;
+      } else {
+        url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`;
+      }
+      const response = await axios.get<WeatherData>(url);
+      setWeatherData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 };
 
 // const WeatherApp = () => {
