@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import dotenv from 'dotenv';
 
-dotenv.config();
-const apiKey = process.env.VITE_OPENWEATHER_API_KEY;
+const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
 const WeatherApp = () => {
   useEffect(() => {
