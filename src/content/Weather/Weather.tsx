@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 interface WeatherData {
   name: string;
@@ -17,6 +17,9 @@ const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
   const fetchWeatherData = async () => {
+    if (!location) {
+      return;
+    }
     try {
       let url = '';
       if (/^\d+$/.test(location)) {
@@ -25,9 +28,20 @@ const WeatherApp = () => {
         url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`;
       }
       const response = await axios.get<WeatherData>(url);
-      setWeatherData(response.data);
+      if (response.status === 200) {
+        setWeatherData(response.data);
+      } else {
+        throw new Error('Unexpected response status');
+      }
     } catch (error) {
       console.error(error);
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.status === 404
+      ) {
+        alert('City not found. Please try again.');
+      }
     }
   };
 
@@ -47,7 +61,12 @@ const WeatherApp = () => {
           onChange={(e) => setLocation(e.target.value)}
           className='px-4 py-2 bg-slate-800 text-slate-200 rounded-lg mr-4 focus:outline-none'
         />
-        <button onClick={fetchWeatherData}>Get Weather</button>
+        <button
+          onClick={fetchWeatherData}
+          className='px-2 py-2 bg-orange-500 text-slate-200 rounded-lg hover:bg-orange-400 focus:outline-none'
+        >
+          Get Weather
+        </button>
       </form>
       {weatherData && (
         <div>
