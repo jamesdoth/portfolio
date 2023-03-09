@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function Survey() {
+export default function Survey() {
   const [selectedRating, setSelectedRating] = useState<number>();
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 

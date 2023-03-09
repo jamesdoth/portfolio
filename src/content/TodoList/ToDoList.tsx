@@ -6,7 +6,7 @@ interface TodoItem {
   id: number;
 }
 
-export const TodoList = () => {
+const TodoList = () => {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
@@ -56,3 +56,5 @@ export const TodoList = () => {
     </div>
   );
 };
+
+export default TodoList;

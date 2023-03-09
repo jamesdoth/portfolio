@@ -1,8 +1,8 @@
 import ScrollButton from './components/ScrollButton';
 import Card from './components/Card';
 import Game from './content/TicTacToe/Game';
-import { Survey } from './content/Survey/Survey';
-import { TodoList } from './content/TodoList/ToDoList';
+import Survey from './content/Survey/Survey';
+import TodoList from './content/TodoList/ToDoList';
 import WeatherApp from './content/Weather/Weather';
 
 function App() {
