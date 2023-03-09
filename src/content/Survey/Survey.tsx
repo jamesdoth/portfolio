@@ -49,6 +49,7 @@ export default function Survey() {
       <div className='flex justify-between'>
         {[1, 2, 3, 4, 5].map((rating) => (
           <button
+            key={rating.toString()}
             type='button'
             onClick={() => handleRatingClicked(rating)}
             className='bg-slate-800 hover:bg-slate-400 focus:bg-orange-500 rounded-full w-12 h-12 text-slate-200'
