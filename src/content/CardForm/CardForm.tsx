@@ -41,6 +41,16 @@ const CardForm = () => {
           onChange={handleCardholderNameChange}
         />
       </div>
+      <div className='mb-4'>
+        <label className='block font-medium mb-1'>CARD NUMBER</label>
+        <input
+          type='text'
+          placeholder='e.g. 1234 5678 9123 0000'
+          className='w-full p-2 border-2 border-gray-200 rounded'
+          value={cardNumber}
+          onChange={handleCardNumberChange}
+        />
+      </div>
     </div>
   );
 };
