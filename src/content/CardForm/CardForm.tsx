@@ -74,6 +74,16 @@ const CardForm = () => {
             />
           </div>
         </div>
+        <div className='w-1/2 ml-2'>
+          <label className='block font-medium mb-1'>CVC</label>
+          <input
+            type='text'
+            placeholder='e.g. 123'
+            className='w-full p-2 border-2 border-gray-200 rounded'
+            value={cvc}
+            onChange={handleCvcChange}
+          />
+        </div>
       </div>
     </div>
   );
