@@ -58,7 +58,7 @@ const CardForm = () => {
             <input
               type='text'
               placeholder='MM'
-              className='w-1/2 p-2 border-2 border-gray-200 rounded'
+              className='w-1/2 p-2 border-2 border-gray-200 rounded text-center'
               value={expMonth}
               onChange={handleExpMonthChange}
             />
@@ -68,7 +68,7 @@ const CardForm = () => {
             <input
               type='text'
               placeholder='YY'
-              className='w-1/2 p-2 border-2 border-gray-200 rounded'
+              className='w-1/2 p-2 border-2 border-gray-200 rounded text-center'
               value={expYear}
               onChange={handleExpYearChange}
             />
@@ -84,6 +84,11 @@ const CardForm = () => {
             onChange={handleCvcChange}
           />
         </div>
+      </div>
+      <div className='mb-4 flex justify-center'>
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full'>
+          CONFIRM
+        </button>
       </div>
     </div>
   );
