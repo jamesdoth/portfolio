@@ -2,11 +2,31 @@ import { useState } from 'react';
 
 const CardForm = () => {
   const [cardholderName, setCardholderName] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [expMonth, setExpMonth] = useState('');
+  const [expYear, setExpYear] = useState('');
+  const [cvc, setCvc] = useState('');
 
   const handleCardholderNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setCardholderName(e.target.value);
+  };
+
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCardNumber(e.target.value);
+  };
+
+  const handleExpMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExpMonth(e.target.value);
+  };
+
+  const handleExpYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExpYear(e.target.value);
+  };
+
+  const handleCvcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCvc(e.target.value);
   };
 
   return (
