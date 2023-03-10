@@ -51,6 +51,30 @@ const CardForm = () => {
           onChange={handleCardNumberChange}
         />
       </div>
+      <div className='flex mb-4'>
+        <div className='w-1/2 mr-2'>
+          <label className='block font-medium mb-1'>EXP. DATE (MM/YY)</label>
+          <div className='flex'>
+            <input
+              type='text'
+              placeholder='MM'
+              className='w-1/2 p-2 border-2 border-gray-200 rounded'
+              value={expMonth}
+              onChange={handleExpMonthChange}
+            />
+            <span className='flex items-center justify-center w-8 text-gray-400'>
+              /
+            </span>
+            <input
+              type='text'
+              placeholder='YY'
+              className='w-1/2 p-2 border-2 border-gray-200 rounded'
+              value={expYear}
+              onChange={handleExpYearChange}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
