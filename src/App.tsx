@@ -4,6 +4,7 @@ import Game from './content/TicTacToe/Game';
 import Survey from './content/Survey/Survey';
 import TodoList from './content/TodoList/ToDoList';
 import WeatherApp from './content/Weather/Weather';
+import CardForm from './content/CardForm/CardForm';
 
 function App() {
   return (
@@ -40,19 +41,22 @@ function App() {
       </div>
       <div
         id='third-section'
-        className='border-2 border-green-600 flex gap-1 flex-wrap h-screen justify-center items-center'
+        className='border-2 border-green-600 flex flex-col gap-1 h-screen justify-center items-center'
       >
-        <div className='border-2 border-red-600 flex flex-col mb-12'>
+        <div className='border-2 border-red-600 mb-12'>
           <Card title='TicTacToe' content={<Game />} />
         </div>
-        <div className='border-2 border-red-600 flex flex-col mb-12'>
+        <div className='border-2 border-red-600 mb-12'>
           <Card title='Survey' content={<Survey />} />
         </div>
-        <div className='border-2 border-red-600 flex flex-col mb-12'>
+        <div className='border-2 border-red-600 mb-12'>
           <Card title='Todo List' content={<TodoList />} />
         </div>
-        <div className='border-2 border-red-600 flex flex-col mb-12'>
+        <div className='border-2 border-red-600 mb-12'>
           <Card title='Weather App' content={<WeatherApp />} />
+        </div>
+        <div className='border-2 border-red-600 mb-12'>
+          <Card title='CC Form' content={<CardForm />} />
         </div>
         <div>
           <ScrollButton
