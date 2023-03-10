@@ -4,7 +4,7 @@ import Game from './content/TicTacToe/Game';
 import Survey from './content/Survey/Survey';
 import TodoList from './content/TodoList/ToDoList';
 import WeatherApp from './content/Weather/Weather';
-import CardForm from './content/CardForm/CardForm';
+import CCForm from './content/CCForm/CCForm';
 
 function App() {
   return (
@@ -56,7 +56,7 @@ function App() {
           <Card title='Weather App' content={<WeatherApp />} />
         </div>
         <div className='border-2 border-red-600 mb-12'>
-          <Card title='CC Form' content={<CardForm />} />
+          <Card title='CC Form' content={<CCForm />} />
         </div>
         <div>
           <ScrollButton
