@@ -7,7 +7,9 @@ const CCForm = () => {
   const [expYear, setExpYear] = useState('');
   const [cvc, setCvc] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessageCCName, setErrorMessageCCName] = useState('');
+  const [errorMessageExpMonth, setErrorMessageExpMonth] = useState('');
+  const [errorMessageExpYear, setErrorMessageExpYear] = useState('');
 
   const handleCardholderNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -34,11 +36,25 @@ const CCForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!cardholderName) {
-      setErrorMessage('Cardholder name is required');
+      setErrorMessageCCName('Cardholder name is required');
     } else if (!/^[a-zA-Z]+([- ]?[a-zA-Z]+)*$/.test(cardholderName)) {
-      setErrorMessage('Cardholder name is invalid');
+      setErrorMessageCCName('Cardholder name is invalid');
     } else {
-      setErrorMessage('');
+      setErrorMessageCCName('');
+    }
+    if (!expMonth) {
+      setErrorMessageExpMonth('Expiration month is required');
+    } else if (!/^(0[1-9]|1[0-2])$/.test(expMonth)) {
+      setErrorMessageExpMonth('Expiration month is invalid');
+    } else {
+      setErrorMessageExpMonth('');
+    }
+    if (!expYear) {
+      setErrorMessageExpYear('Expiration year is required');
+    } else if (!/^\d{2}$/.test(expYear)) {
+      setErrorMessageExpYear('Expiration year is invalid');
+    } else {
+      setErrorMessageExpYear('');
     }
   };
 
@@ -54,8 +70,8 @@ const CCForm = () => {
             value={cardholderName}
             onChange={handleCardholderNameChange}
           />
-          {errorMessage && (
-            <p className='text-red-600 text-sm'>{errorMessage}</p>
+          {errorMessageCCName && (
+            <p className='text-red-600 text-sm'>{errorMessageCCName}</p>
           )}
         </div>
         <div className='mb-4'>
@@ -79,6 +95,9 @@ const CCForm = () => {
                 value={expMonth}
                 onChange={handleExpMonthChange}
               />
+              {errorMessageExpMonth && (
+                <p className='text-red-600 text-sm'>{errorMessageExpMonth}</p>
+              )}
               <span className='flex items-center justify-center w-8 text-gray-400'>
                 /
               </span>
@@ -89,6 +108,9 @@ const CCForm = () => {
                 value={expYear}
                 onChange={handleExpYearChange}
               />
+              {errorMessageExpYear && (
+                <p className='text-red-600 text-sm'>{errorMessageExpYear}</p>
+              )}
             </div>
           </div>
           <div className='w-1/2 ml-2'>
