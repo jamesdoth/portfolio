@@ -43,16 +43,16 @@ const CCForm = () => {
       setErrorMessageCCName('');
     }
     if (!expMonth) {
-      setErrorMessageExpMonth('Expiration month is required');
+      setErrorMessageExpMonth('Month is required');
     } else if (!/^(0[1-9]|1[0-2])$/.test(expMonth)) {
-      setErrorMessageExpMonth('Expiration month is invalid');
+      setErrorMessageExpMonth('Invalid');
     } else {
       setErrorMessageExpMonth('');
     }
     if (!expYear) {
-      setErrorMessageExpYear('Expiration year is required');
+      setErrorMessageExpYear('Year is required');
     } else if (!/^\d{2}$/.test(expYear)) {
-      setErrorMessageExpYear('Expiration year is invalid');
+      setErrorMessageExpYear('Invalid');
     } else {
       setErrorMessageExpYear('');
     }
@@ -88,29 +88,31 @@ const CCForm = () => {
           <div className='w-1/2 mr-2'>
             <label className='block font-medium mb-1'>EXP. DATE (MM/YY)</label>
             <div className='flex'>
-              <input
-                type='text'
-                placeholder='MM'
-                className='w-1/2 p-2 border-2 border-gray-200 rounded text-center'
-                value={expMonth}
-                onChange={handleExpMonthChange}
-              />
-              {errorMessageExpMonth && (
-                <p className='text-red-600 text-sm'>{errorMessageExpMonth}</p>
-              )}
-              <span className='flex items-center justify-center w-8 text-gray-400'>
-                /
-              </span>
-              <input
-                type='text'
-                placeholder='YY'
-                className='w-1/2 p-2 border-2 border-gray-200 rounded text-center'
-                value={expYear}
-                onChange={handleExpYearChange}
-              />
-              {errorMessageExpYear && (
-                <p className='text-red-600 text-sm'>{errorMessageExpYear}</p>
-              )}
+              <div>
+                <input
+                  type='text'
+                  placeholder='MM'
+                  className='w-2/3 p-2 border-2 border-gray-200 rounded text-center'
+                  onChange={handleExpMonthChange}
+                  maxLength={2}
+                />
+                {errorMessageExpMonth && (
+                  <p className='text-red-600 text-sm'>{errorMessageExpMonth}</p>
+                )}
+              </div>
+              <div>
+                <input
+                  type='text'
+                  placeholder='YY'
+                  className='w-2/3 p-2 border-2 border-gray-200 rounded text-center'
+                  value={expYear}
+                  onChange={handleExpYearChange}
+                  maxLength={2}
+                />
+                {errorMessageExpYear && (
+                  <p className='text-red-600 text-sm'>{errorMessageExpYear}</p>
+                )}
+              </div>
             </div>
           </div>
           <div className='w-1/2 ml-2'>
