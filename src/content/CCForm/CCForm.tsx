@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+// should probably just use react hook form library
+
 const CCForm = () => {
   const [cardholderName, setCardholderName] = useState('');
   const [cardNumber, setCardNumber] = useState('');
