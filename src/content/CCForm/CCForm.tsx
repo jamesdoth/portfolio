@@ -45,7 +45,7 @@ const CCForm = () => {
       setMaxLength(15);
     } else {
       setCardImage('default');
-      setMaxLength(16);
+      setMaxLength(20);
     }
   };
 
