@@ -13,6 +13,9 @@ const CCForm = () => {
   const [errorMessageExpMonth, setErrorMessageExpMonth] = useState('');
   const [errorMessageExpYear, setErrorMessageExpYear] = useState('');
 
+  const [errorMessageCardNumber, setErrorMessageCardNumber] = useState('');
+  const [cardImage, setCardImage] = useState('');
+
   const handleCardholderNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
