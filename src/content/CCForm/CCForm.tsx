@@ -23,6 +23,7 @@ const CCForm = () => {
   };
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const cardNumber = e.target.value;
     setCardNumber(e.target.value);
   };
 
