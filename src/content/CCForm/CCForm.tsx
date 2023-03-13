@@ -30,6 +30,7 @@ const CCForm = () => {
       setErrorMessageCardNumber('Invalid card number');
       setCardImage('');
       return;
+    }
   };
 
   const handleExpMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
