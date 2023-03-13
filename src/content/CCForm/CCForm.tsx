@@ -15,6 +15,7 @@ const CCForm = () => {
 
   const [errorMessageCardNumber, setErrorMessageCardNumber] = useState('');
   const [cardImage, setCardImage] = useState('');
+  const [maxLength, setMaxLength] = useState(16);
 
   const handleCardholderNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -40,7 +41,7 @@ const CCForm = () => {
     } else if (cardNumber.startsWith('34') || cardNumber.startsWith('37')) {
       setCardImage('amex');
     } else {
-      setCardImage('');
+      setCardImage('default');
     }
   };
 
@@ -106,6 +107,14 @@ const CCForm = () => {
             value={cardNumber}
             onChange={handleCardNumberChange}
           />
+          {errorMessageCardNumber && (
+            <p className='text-red-600 text-sm'>{errorMessageCardNumber}</p>
+          )}
+          {cardImage && (
+            <div className='mt-2'>
+              <img src={`/images/${cardImage}.png`} alt={cardImage} />
+            </div>
+          )}
         </div>
         <div className='flex mb-4'>
           <div className='w-1/2 mr-2'>
