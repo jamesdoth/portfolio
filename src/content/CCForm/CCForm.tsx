@@ -31,6 +31,23 @@ const CCForm = () => {
       setCardImage('');
       return;
     }
+
+    setErrorMessageCardNumber('');
+    if (cardNumber.startsWith('4')) {
+      setCardImage('visa');
+    } else if (
+      cardNumber.startsWith('51') ||
+      cardNumber.startsWith('52') ||
+      cardNumber.startsWith('53') ||
+      cardNumber.startsWith('54') ||
+      cardNumber.startsWith('55')
+    ) {
+      setCardImage('mastercard');
+    } else if (cardNumber.startsWith('34') || cardNumber.startsWith('37')) {
+      setCardImage('amex');
+    } else {
+      setCardImage('');
+    }
   };
 
   const handleExpMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
