@@ -12,10 +12,12 @@ const CCForm = () => {
   const [errorMessageCCName, setErrorMessageCCName] = useState('');
   const [errorMessageExpMonth, setErrorMessageExpMonth] = useState('');
   const [errorMessageExpYear, setErrorMessageExpYear] = useState('');
+  const [errorMessageCvc, setErrorMessageCvc] = useState('');
 
   const [errorMessageCardNumber, setErrorMessageCardNumber] = useState('');
   const [cardImage, setCardImage] = useState('');
-  const [maxLength, setMaxLength] = useState(16);
+  const [maxCCNLength, setCCNMaxLength] = useState(16);
+  const [maxCVCLength, setCVCMaxLength] = useState(3);
 
   const handleCardholderNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -36,16 +38,20 @@ const CCForm = () => {
     setErrorMessageCardNumber('');
     if (cardNumber.startsWith('4')) {
       setCardImage('visa');
-      setMaxLength(16);
+      setCCNMaxLength(16);
+      setCVCMaxLength(3);
     } else if (/^5[1-5]/.test(cardNumber)) {
       setCardImage('mastercard');
-      setMaxLength(16);
+      setCCNMaxLength(16);
+      setCVCMaxLength(3);
     } else if (cardNumber.startsWith('34') || cardNumber.startsWith('37')) {
       setCardImage('amex');
-      setMaxLength(15);
+      setCCNMaxLength(15);
+      setCVCMaxLength(4);
     } else {
       setCardImage('default');
-      setMaxLength(20);
+      setCCNMaxLength(20);
+      setCVCMaxLength(3);
     }
   };
 
@@ -59,10 +65,21 @@ const CCForm = () => {
 
   const handleCvcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCvc(e.target.value);
+    if (!/^\d{1,4}$/.test(e.target.value)) {
+      setErrorMessageCvc('Invalid CVC');
+    } else {
+      setErrorMessageCvc('');
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!cardNumber) {
+      setErrorMessageCardNumber('Card number is required');
+    }
+    if (!cvc) {
+      setErrorMessageCvc('CVC is required');
+    }
     if (!cardholderName) {
       setErrorMessageCCName('Cardholder name is required');
     } else if (!/^[a-zA-Z]+([- ]?[a-zA-Z]+)*$/.test(cardholderName)) {
@@ -110,7 +127,7 @@ const CCForm = () => {
             className='w-full p-2 border-2 border-gray-200 rounded'
             value={cardNumber}
             onChange={handleCardNumberChange}
-            maxLength={maxLength}
+            maxLength={maxCCNLength}
           />
           {errorMessageCardNumber && (
             <p className='text-red-600 text-sm'>{errorMessageCardNumber}</p>
@@ -160,7 +177,11 @@ const CCForm = () => {
               className='w-full p-2 border-2 border-gray-200 rounded'
               value={cvc}
               onChange={handleCvcChange}
+              maxLength={maxCVCLength}
             />
+            {errorMessageCvc && (
+              <p className='text-red-600 text-sm'>{errorMessageCvc}</p>
+            )}
           </div>
         </div>
         <div className='mb-4 flex justify-center'>
