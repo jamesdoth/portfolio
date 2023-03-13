@@ -25,6 +25,11 @@ const CCForm = () => {
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const cardNumber = e.target.value;
     setCardNumber(e.target.value);
+
+    if (!/^\d{1,16}$/.test(cardNumber)) {
+      setErrorMessageCardNumber('Invalid card number');
+      setCardImage('');
+      return;
   };
 
   const handleExpMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
