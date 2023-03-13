@@ -36,12 +36,16 @@ const CCForm = () => {
     setErrorMessageCardNumber('');
     if (cardNumber.startsWith('4')) {
       setCardImage('visa');
+      setMaxLength(16);
     } else if (/^5[1-5]/.test(cardNumber)) {
       setCardImage('mastercard');
+      setMaxLength(16);
     } else if (cardNumber.startsWith('34') || cardNumber.startsWith('37')) {
       setCardImage('amex');
+      setMaxLength(15);
     } else {
       setCardImage('default');
+      setMaxLength(16);
     }
   };
 
@@ -106,6 +110,7 @@ const CCForm = () => {
             className='w-full p-2 border-2 border-gray-200 rounded'
             value={cardNumber}
             onChange={handleCardNumberChange}
+            maxLength={maxLength}
           />
           {errorMessageCardNumber && (
             <p className='text-red-600 text-sm'>{errorMessageCardNumber}</p>
