@@ -90,8 +90,13 @@ const WeatherApp = () => {
             {weatherData.main.humidity}%
           </p>
           <p className='font-medium text-lg -mt-2'>
-            <span className='text-orange-500'>Looks Like:</span>{' '}
+            <span className='text-orange-500'>Weather:</span>{' '}
             {weatherData.weather[0].main}
+          </p>
+          <p className='font-medium text-lg -mt-2'>
+            <span className='text-orange-500'>Looks like:</span>{' '}
+            {weatherData.weather[0].description.charAt(0).toUpperCase() +
+              weatherData.weather[0].description.slice(1)}
           </p>
         </div>
       )}
