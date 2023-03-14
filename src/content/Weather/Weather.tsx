@@ -7,7 +7,12 @@ interface WeatherData {
     temp: number;
     feels_like: number;
     humidity: number;
+    weather: string;
   };
+  weather: {
+    main: string;
+    description: string;
+  }[];
 }
 
 const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
@@ -83,6 +88,10 @@ const WeatherApp = () => {
           <p className='font-medium text-lg -mt-2'>
             <span className='text-orange-500'>Humidity:</span>{' '}
             {weatherData.main.humidity}%
+          </p>
+          <p className='font-medium text-lg -mt-2'>
+            <span className='text-orange-500'>Looks Like:</span>{' '}
+            {weatherData.weather[0].main}
           </p>
         </div>
       )}
