@@ -56,7 +56,14 @@ const CCForm = () => {
       return;
     }
 
-    if (cardNumberDigitsOnly.startsWith('4')) {
+    if (cardNumberDigitsOnly === '') {
+      setCardImage('');
+      setCCNMaxLength(19); // 16 digits + 3 spaces
+      setCVCMaxLength(3);
+      setCardNumber('');
+      setErrorMessageCardNumber('');
+      return;
+    } else if (cardNumberDigitsOnly.startsWith('4')) {
       cardType = 'visa';
       setCardImage('visa');
       setCCNMaxLength(19); // 16 digits + 3 spaces
