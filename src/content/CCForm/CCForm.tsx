@@ -47,7 +47,10 @@ const CCForm = () => {
     const cardNumber = e.target.value;
     const cardNumberDigitsOnly = cardNumber.replace(/\s+/g, '');
 
-    if (!/^\d{1,20}$/.test(cardNumberDigitsOnly)) {
+    if (
+      cardNumberDigitsOnly !== '' &&
+      !/^\d{1,20}$/.test(cardNumberDigitsOnly)
+    ) {
       setErrorMessageCardNumber('Invalid card number');
       setCardImage('');
       return;
