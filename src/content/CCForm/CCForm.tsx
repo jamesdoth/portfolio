@@ -46,6 +46,40 @@ const CCForm = () => {
 
     const cardNumber = e.target.value;
     const cardNumberDigitsOnly = cardNumber.replace(/\s+/g, '');
+
+    if (!/^\d{1,20}$/.test(cardNumberDigitsOnly)) {
+      setErrorMessageCardNumber('Invalid card number');
+      setCardImage('');
+      return;
+    }
+
+    if (cardNumberDigitsOnly.startsWith('4')) {
+      cardType = 'visa';
+      setCardImage('visa');
+      setCCNMaxLength(19); // 16 digits + 3 spaces
+      setCVCMaxLength(3);
+    } else if (/^5[1-5]/.test(cardNumberDigitsOnly)) {
+      cardType = 'mastercard';
+      setCardImage('mastercard');
+      setCCNMaxLength(19); // 16 digits + 3 spaces
+      setCVCMaxLength(3);
+    } else if (
+      cardNumberDigitsOnly.startsWith('34') ||
+      cardNumberDigitsOnly.startsWith('37')
+    ) {
+      cardType = 'amex';
+      setCardImage('amex');
+      setCCNMaxLength(17); // 15 digits + 2 spaces
+      setCVCMaxLength(4);
+    } else {
+      setCardImage('default');
+      setCCNMaxLength(19); // 16 digits + 3 spaces
+      setCVCMaxLength(3);
+    }
+
+    const formattedCardNumber = formatCardNumber(cardNumber, cardType);
+    setCardNumber(formattedCardNumber);
+    setErrorMessageCardNumber('');
   };
 
   const handleExpMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
