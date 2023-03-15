@@ -19,6 +19,22 @@ const CCForm = () => {
   const [maxCCNLength, setCCNMaxLength] = useState(16);
   const [maxCVCLength, setCVCMaxLength] = useState(3);
 
+  const formatCardNumber = (cardNumber: string, cardType: string) => {
+    const cardNumberDigitsOnly = cardNumber.replace(/\s+/g, '');
+
+    if (cardType === 'amex') {
+      const formattedCardNumber = cardNumberDigitsOnly
+        .replace(/(\d{4})(\d{6})?(\d{5})?/, '$1 $2 $3')
+        .trim();
+      return formattedCardNumber;
+    } else {
+      const formattedCardNumber = cardNumberDigitsOnly
+        .replace(/(\d{4})(\d{4})?(\d{4})?(\d{4})?/, '$1 $2 $3 $4')
+        .trim();
+      return formattedCardNumber;
+    }
+  };
+
   const handleCardholderNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
