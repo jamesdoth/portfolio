@@ -35,6 +35,12 @@ const CCForm = () => {
     }
   };
 
+  const handleCardholderNameChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setCardholderName(e.target.value);
+  };
+
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let cardType = 'default';
 
