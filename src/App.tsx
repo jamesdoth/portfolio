@@ -1,4 +1,5 @@
 import ScrollButton from './components/ScrollButton';
+import Navbar from './components/Navbar';
 import Card from './components/Card';
 import Game from './content/TicTacToe/Game';
 import Survey from './content/Survey/Survey';
@@ -9,6 +10,7 @@ import CCForm from './content/CCForm/CCForm';
 function App() {
   return (
     <div className='border-2 border-red-600 min-h-screen bg-slate-800'>
+      <Navbar />
       <div
         id='first-section'
         className='border-2 border-green-600 flex h-screen justify-center items-center'
