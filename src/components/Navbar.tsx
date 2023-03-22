@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='fixed w-full bg-gray-800'>
+    <header className='fixed w-full bg-gray-800 z-10'>
       <nav className='container mx-auto px-4 py-2 flex items-center justify-between'>
         <div className='md:hidden'>
           <button

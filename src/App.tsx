@@ -16,7 +16,7 @@ function App() {
         className='border-2 border-green-600 flex h-screen justify-center items-center'
       >
         <div className='border-2 border-red-600 flex flex-col mb-16'>
-          <p className='border-2 border-green-600 text-center text-gray-200 max-w-none text-7xl mb-12 tracking-3 z-10'>
+          <p className='border-2 border-green-600 text-center text-gray-200 max-w-none text-7xl mb-12 tracking-3'>
             Jim Han
           </p>
           <svg
