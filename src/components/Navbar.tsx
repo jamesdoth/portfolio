@@ -1,5 +1,4 @@
-// Navbar.tsx
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface NavLinkProps {
   href: string;
@@ -23,10 +22,32 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label }) => {
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <header className='fixed w-full bg-gray-800 z-10'>
-      <nav className='container mx-auto px-4 py-2 flex items-center justify-between'>
+      <nav
+        className='container mx-auto px-4 py-2 flex items-center justify-between'
+        ref={navRef}
+      >
         <div className='md:hidden'>
           <button
             onClick={() => setIsOpen(!isOpen)}
