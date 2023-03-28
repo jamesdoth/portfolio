@@ -36,7 +36,7 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
   return (
     <Slider {...settings}>
       {contentGrid.map((row, rowIndex) => (
-        <div key={rowIndex} className='grid grid-cols-2 gap-1 h-full w-full'>
+        <div key={rowIndex}>
           {row.map((col, colIndex) => (
             <div key={colIndex}>{col}</div>
           ))}
