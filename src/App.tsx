@@ -6,6 +6,7 @@ import Survey from './content/Survey/Survey';
 import TodoList from './content/TodoList/ToDoList';
 import WeatherApp from './content/Weather/Weather';
 import CCForm from './content/CCForm/CCForm';
+import ContentCarousel from './components/ContentCarousel';
 
 function App() {
   const contentComponents = [
@@ -61,31 +62,14 @@ function App() {
           />
         </div>
       </div>
-      <div
-        id='third-section'
-        className='border-2 border-green-600 flex flex-col gap-1 h-screen justify-center items-center'
-      >
-        <div className='border-2 border-red-600 mb-12'>
-          <Card title='TicTacToe' content={<Game />} />
-        </div>
-        <div className='border-2 border-red-600 mb-12'>
-          <Card title='Survey' content={<Survey />} />
-        </div>
-        <div className='border-2 border-red-600 mb-12'>
-          <Card title='Todo List' content={<TodoList />} />
-        </div>
-        <div className='border-2 border-red-600 mb-12'>
-          <Card title='Weather App' content={<WeatherApp />} />
-        </div>
-        <div className='border-2 border-red-600 mb-12'>
-          <Card title='CC Form' content={<CCForm />} />
-        </div>
+      <div id='third-section' className='border-2 border-green-600'>
+        <ContentCarousel contents={contentComponents} />
         <div>
-          <ScrollButton
+          {/* <ScrollButton
             id='third-section-button'
             section='fourth-section'
             label='Click me'
-          />
+          /> */}
         </div>
       </div>
       <div
