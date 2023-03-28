@@ -8,6 +8,14 @@ import WeatherApp from './content/Weather/Weather';
 import CCForm from './content/CCForm/CCForm';
 
 function App() {
+  const contentComponents = [
+    { title: 'TicTacToe', content: <Game /> },
+    { title: 'Survey', content: <Survey /> },
+    { title: 'Todo List', content: <TodoList /> },
+    { title: 'Weather App', content: <WeatherApp /> },
+    { title: 'CC Form', content: <CCForm /> },
+  ];
+
   return (
     <div className='border-2 border-red-600 min-h-screen bg-slate-800'>
       <Navbar />
