@@ -39,7 +39,7 @@ function Card({ title, content }: CardProps) {
       <motion.div
         onClick={handleCardClick}
         className={`bg-slate-500 flex flex-col justify-center items-center ${
-          isOpen ? 'w-96 transform z-10' : 'cursor-pointer w-48 h-48 m-6'
+          isOpen ? 'w-96 transform z-10' : 'cursor-pointer w-36 h-36 m-6'
         }`}
       >
         {!isOpen && (

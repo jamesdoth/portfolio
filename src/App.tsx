@@ -62,8 +62,15 @@ function App() {
           />
         </div>
       </div>
-      <div id='third-section' className='border-2 border-green-600'>
-        <ContentCarousel contents={contentComponents} />
+      <div
+        id='third-section'
+        className='border-2 border-green-600 flex flex-col py-44 h-screen'
+      >
+        <div className='flex justify-center items-center'>
+          <div className='border-2 border-blue-500 w-96'>
+            <ContentCarousel contents={contentComponents} />
+          </div>
+        </div>
         <div>
           {/* <ScrollButton
             id='third-section-button'
