@@ -35,11 +35,11 @@ function Card({ title, content }: CardProps) {
   });
 
   return (
-    <div className='bg-slate-500' ref={ref}>
+    <div ref={ref}>
       <motion.div
         onClick={handleCardClick}
-        className={`flex flex-col justify-center items-center p-4 ${
-          isOpen ? '' : 'cursor-pointer'
+        className={`bg-slate-500 flex flex-col justify-center items-center ${
+          isOpen ? 'w-96' : 'cursor-pointer w-48 h-48 m-6'
         }`}
       >
         {!isOpen && (

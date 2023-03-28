@@ -11,11 +11,11 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     initialSlide: 0,
     customPaging: (i: number) => (
-      <div className='bg-white w-2 h-2 rounded-full opacity-50 hover:opacity-100 cursor-pointer' />
+      <div className='bg-white w-2 h-2 my-5 rounded-full opacity-50 hover:opacity-100 cursor-pointer' />
     ),
   };
 
