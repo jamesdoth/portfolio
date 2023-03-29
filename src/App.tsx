@@ -64,7 +64,7 @@ function App() {
       </div>
       <div
         id='third-section'
-        className='border-2 border-green-600 flex justify-center items-center py-44 h-screen'
+        className='border-2 border-green-600 flex py-44 h-screen justify-center items-center lg:justify-end lg:px-72'
       >
         <div className='border-2 border-blue-500 w-96'>
           <ContentCarousel contents={contentComponents} />
