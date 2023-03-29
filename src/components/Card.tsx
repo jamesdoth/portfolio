@@ -5,6 +5,7 @@ interface CardProps {
   title: string;
   content: React.ReactNode;
   onClick: () => void;
+  expanded?: boolean;
 }
 
 function Card({ title, content, onClick }: CardProps) {
