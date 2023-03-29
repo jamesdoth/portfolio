@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import Card from './Card';
+import ExpandedContentModal from './ExpandedContentModal';
 
 interface ContentCarouselProps {
   contents: Array<{ title: string; content: React.ReactNode }>;
@@ -11,10 +12,17 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
   const [expandedCardIndex, setExpandedCardIndex] = React.useState<
     number | null
   >(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [modalContent, setModalContent] = React.useState<React.ReactNode>(null);
   const sliderRef = React.useRef<Slider>(null);
 
-  const handleCardClick = (index: number) => {
-    setExpandedCardIndex(expandedCardIndex === index ? null : index);
+  const handleCardClick = (content: React.ReactNode) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const settings = {
@@ -51,7 +59,7 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
           key={index}
           title={content.title}
           content={content.content}
-          onClick={() => handleCardClick(index)}
+          onClick={() => handleCardClick(content.content)}
           expanded={expanded}
         />
       );
@@ -60,15 +68,24 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
   }, [] as JSX.Element[][]);
 
   return (
-    <Slider ref={sliderRef} {...settings}>
-      {contentGrid.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {row.map((col, colIndex) => (
-            <div key={colIndex}>{col}</div>
-          ))}
-        </div>
-      ))}
-    </Slider>
+    <>
+      <Slider ref={sliderRef} {...settings}>
+        {contentGrid.map((row, rowIndex) => (
+          <div key={rowIndex}>
+            {row.map((col, colIndex) => (
+              <div key={colIndex}>{col}</div>
+            ))}
+          </div>
+        ))}
+      </Slider>
+      {isModalOpen && (
+        <ExpandedContentModal
+          isOpen={isModalOpen}
+          content={modalContent}
+          onClose={handleCloseModal}
+        />
+      )}
+    </>
   );
 };
 
