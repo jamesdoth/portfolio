@@ -7,6 +7,8 @@ interface ContentCarouselProps {
 }
 
 const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
+  const [activeDot, setActiveDot] = React.useState(0);
+
   const settings = {
     dots: true,
     infinite: false,
@@ -15,8 +17,14 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
     slidesToScroll: 1,
     initialSlide: 0,
     customPaging: (i: number) => (
-      <div className='bg-white w-2 h-2 my-5 rounded-full opacity-50 hover:opacity-100 cursor-pointer' />
+      <div
+        className={`bg-white w-2 h-2 my-5 rounded-full ${
+          i === activeDot ? 'opacity-100' : 'opacity-50'
+        } cursor-pointer`}
+      />
     ),
+    beforeChange: (current: number, next: number) => setActiveDot(next),
+    arrows: false,
   };
 
   const contentGrid = contents.reduce((acc, content, index) => {
