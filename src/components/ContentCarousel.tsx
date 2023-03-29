@@ -8,10 +8,12 @@ interface ContentCarouselProps {
 
 const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
   const [activeDot, setActiveDot] = React.useState(0);
-  const [expandedCard, setExpandedCard] = React.useState<number | null>(null);
+  const [expandedCardIndex, setExpandedCardIndex] = React.useState<
+    number | null
+  >(null);
 
   const handleCardClick = (index: number) => {
-    setExpandedCard(index === expandedCard ? null : index);
+    setExpandedCardIndex(expandedCardIndex === index ? null : index);
   };
 
   const settings = {
@@ -40,15 +42,19 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
       acc[rowIndex] = [];
     }
 
-    acc[rowIndex][colIndex] = (
-      <Card
-        key={index}
-        title={content.title}
-        content={content.content}
-        expanded={expandedCard === index}
-        onClick={() => handleCardClick(index)}
-      />
-    );
+    const expanded = expandedCardIndex === index;
+
+    if (expandedCardIndex === null || expanded) {
+      acc[rowIndex][colIndex] = (
+        <Card
+          key={index}
+          title={content.title}
+          content={content.content}
+          onClick={() => handleCardClick(index)}
+          expanded={expanded}
+        />
+      );
+    }
     return acc;
   }, [] as JSX.Element[][]);
 
@@ -57,9 +63,7 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
       {contentGrid.map((row, rowIndex) => (
         <div key={rowIndex}>
           {row.map((col, colIndex) => (
-            <div key={colIndex} className='flex justify-center'>
-              {col}
-            </div>
+            <div key={colIndex}>{col}</div>
           ))}
         </div>
       ))}
