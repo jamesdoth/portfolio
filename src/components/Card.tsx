@@ -4,17 +4,17 @@ import { useState, useEffect, useRef } from 'react';
 interface CardProps {
   title: string;
   content: React.ReactNode;
+  expanded: boolean;
+  onClick: () => void;
 }
 
-function Card({ title, content }: CardProps) {
-  const [isOpen, setIsOpen] = useState(false);
+function Card({ title, content, expanded, onClick }: CardProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleCardClick = () => {
-    if (isOpen) {
-      return;
+    if (!expanded) {
+      onClick();
     }
-    setIsOpen(true);
   };
 
   const handleExpandedCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -23,7 +23,7 @@ function Card({ title, content }: CardProps) {
 
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
-      setIsOpen(false);
+      onClick();
     }
   };
 
@@ -38,11 +38,11 @@ function Card({ title, content }: CardProps) {
     <div ref={ref}>
       <motion.div
         onClick={handleCardClick}
-        className={`bg-slate-500 flex flex-col justify-center items-center ${
-          isOpen ? 'w-96 transform z-10' : 'cursor-pointer w-36 h-36 m-6'
+        className={`bg-slate-500 flex flex-col justify-center items-center transition-all duration-300 ${
+          expanded ? 'w-96 h-auto' : 'cursor-pointer w-36 h-36 m-6'
         }`}
       >
-        {!isOpen && (
+        {!expanded && (
           /* The h2 element is intercepting the click event and 
         preventing it from bubbling up to the motion.div element that 
         has the handleCardClick click handler. The pointer-events-none 
@@ -52,7 +52,7 @@ function Card({ title, content }: CardProps) {
             {title}
           </motion.h2>
         )}
-        {isOpen && (
+        {!expanded && (
           <motion.div onClick={handleExpandedCardClick} className='w-96'>
             {content}
           </motion.div>

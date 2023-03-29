@@ -41,7 +41,13 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
     }
 
     acc[rowIndex][colIndex] = (
-      <Card key={index} title={content.title} content={content.content} />
+      <Card
+        key={index}
+        title={content.title}
+        content={content.content}
+        expanded={expandedCard === index}
+        onClick={() => handleCardClick(index)}
+      />
     );
     return acc;
   }, [] as JSX.Element[][]);
