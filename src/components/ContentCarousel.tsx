@@ -11,6 +11,7 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
   const [expandedCardIndex, setExpandedCardIndex] = React.useState<
     number | null
   >(null);
+  const sliderRef = React.useRef<Slider>(null);
 
   const handleCardClick = (index: number) => {
     setExpandedCardIndex(expandedCardIndex === index ? null : index);
@@ -59,7 +60,7 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
   }, [] as JSX.Element[][]);
 
   return (
-    <Slider {...settings}>
+    <Slider ref={sliderRef} {...settings}>
       {contentGrid.map((row, rowIndex) => (
         <div key={rowIndex}>
           {row.map((col, colIndex) => (
