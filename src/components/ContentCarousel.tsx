@@ -60,6 +60,7 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ contents }) => {
           title={content.title}
           content={content.content}
           onClick={() => handleCardClick(content.content)}
+          expanded={expanded}
         />
       );
     }
