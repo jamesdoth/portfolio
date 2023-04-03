@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const images = [
   { name: 'Image 1', src: '/images/image1.png' },
@@ -7,20 +7,41 @@ const images = [
 ];
 
 const Gallery = () => {
+  const [searchInput, setSearchInput] = useState('');
+
+  const filteredImages = images.filter((image) =>
+    image.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+
   return (
-    <div className='flex flex-wrap justify-center items-center'>
-      {images.map((image, index) => (
-        <div key={index} className='w-1/3 p-4'>
-          <div className='bg-gray-100 h-80'>
-            <img
-              src={image.src}
-              alt={image.name}
-              className='w-full h-full object-cover'
-            />
+    <div className='flex flex-col items-center'>
+      <div className='w-full max-w-md p-4'>
+        <input
+          type='text'
+          className='w-full p-2 rounded-md shadow-md'
+          placeholder='Search images...'
+          value={searchInput}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className='flex flex-wrap justify-center items-center'>
+        {filteredImages.map((image, index) => (
+          <div key={index} className='w-1/3 p-4'>
+            <div className='bg-gray-100'>
+              <img
+                src={image.src}
+                alt={image.name}
+                className='max-w-full max-h-full object-cover'
+              />
+            </div>
+            <p className='mt-2 text-center font-medium'>{image.name}</p>
           </div>
-          <p className='mt-2 text-center font-medium'>{image.name}</p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
