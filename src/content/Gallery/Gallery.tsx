@@ -10,7 +10,10 @@ const Gallery = () => {
   const [searchInput, setSearchInput] = useState('');
 
   const filteredImages = images.filter((image) =>
-    image.name.toLowerCase().includes(searchInput.toLowerCase())
+    image.name
+      .toLowerCase()
+      .replaceAll(' ', '')
+      .includes(searchInput.toLowerCase().replaceAll(' ', ''))
   );
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
