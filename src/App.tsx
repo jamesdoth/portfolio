@@ -1,6 +1,5 @@
 import ScrollButton from './components/ScrollButton';
 import Navbar from './components/Navbar';
-import Card from './components/Card';
 import Game from './content/TicTacToe/Game';
 import Survey from './content/Survey/Survey';
 import TodoList from './content/TodoList/ToDoList';

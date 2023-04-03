@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <header className='fixed w-full bg-gray-800 z-10'>
+    <header className='fixed w-full bg-gray-800 z-10 top-0'>
       <nav
         className='container mx-auto px-4 py-2 flex items-center justify-between'
         ref={navRef}
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
         <div
           className={`${
             isOpen ? 'block' : 'hidden'
-          } md:hidden absolute left-0 top-full mt-2 w-full bg-gray-800 space-y-2 p-4`}
+          } md:hidden absolute left-0 top-full w-full bg-gray-800 space-y-2 p-4`}
         >
           <NavLink href='#first-section' label='Home' />
           <NavLink href='#second-section' label='About Me' />
