@@ -6,6 +6,7 @@ import TodoList from './content/TodoList/ToDoList';
 import WeatherApp from './content/Weather/Weather';
 import CCForm from './content/CCForm/CCForm';
 import ContentCarousel from './components/ContentCarousel';
+import Gallery from './content/Gallery/Gallery';
 
 function App() {
   const contentComponents = [
@@ -14,6 +15,7 @@ function App() {
     { title: 'Todo List', content: <TodoList /> },
     { title: 'Weather App', content: <WeatherApp /> },
     { title: 'CC Form', content: <CCForm /> },
+    { title: 'Gallery', content: <Gallery /> },
   ];
 
   return (
