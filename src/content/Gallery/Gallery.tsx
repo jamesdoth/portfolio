@@ -31,7 +31,7 @@ const Gallery = () => {
           onChange={handleInputChange}
         />
       </div>
-      <div className='flex flex-wrap justify-center items-center'>
+      <div className='flex flex-wrap justify-center items-center w-96'>
         {filteredImages.map((image, index) => (
           <div key={index} className='w-1/3 p-4'>
             <div className='bg-gray-100'>
