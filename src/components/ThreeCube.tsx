@@ -39,7 +39,11 @@ const ThreeCube = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />;
+  return (
+    <div className='w-3/4 h-3/4'>
+      <canvas ref={canvasRef} className='w-full h-full' />
+    </div>
+  );
 };
 
 export default ThreeCube;

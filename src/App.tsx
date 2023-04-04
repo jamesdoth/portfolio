@@ -28,18 +28,18 @@ function App() {
         id='first-section'
         className='border-2 border-green-600 flex h-screen justify-center items-center'
       >
-        <div className='border-2 border-red-600 flex flex-col mb-16'>
-          <p className='border-2 border-green-600 text-center text-gray-200 max-w-none text-7xl mb-12 tracking-3'>
+        <div className='z-10 border-2 border-red-600 flex flex-col mb-16'>
+          <p className='border-2 border-green-600 text-center text-gray-200 max-w-none text-7xl mb-60 tracking-3'>
             Jim Han
           </p>
-          <div className='w-48 h-48'>
-            <ThreeCube />
-          </div>
           <ScrollButton
             id='first-section-button'
             section='second-section'
             label='Click me'
           />
+        </div>
+        <div className='absolute z-0'>
+          <ThreeCube />
         </div>
       </div>
       <div
