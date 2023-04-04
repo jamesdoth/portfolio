@@ -1,49 +1,45 @@
-import { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const ThreeCube = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (containerRef.current) {
-      // Create the scene
-      const scene = new THREE.Scene();
-      // Create the camera
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        containerRef.current.clientWidth / containerRef.current.clientHeight,
-        0.1,
-        1000
-      );
-      // Set the camera position
-      camera.position.z = 2;
-      // Create the renderer
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      // Set the renderer size
-      renderer.setSize(
-        containerRef.current.clientWidth,
-        containerRef.current.clientHeight
-      );
-      // Add the renderer to the container
-      containerRef.current.appendChild(renderer.domElement);
-      // Create the cube
-      const geometry = new THREE.BoxGeometry();
-      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      const cube = new THREE.Mesh(geometry, material);
-      // Add the cube to the scene
-      scene.add(cube);
-      // Animate the cube
-      const animate = () => {
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
-      };
-      animate();
-    }
+    // create Three.js scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current! });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+    camera.position.z = 5;
+
+    // render loop
+    const animate = () => {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    // clean up Three.js scene on unmount
+    return () => {
+      scene.remove(cube);
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+    };
   }, []);
 
-  return <div ref={containerRef} className='w-48 h-48'></div>;
+  return <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />;
 };
 
 export default ThreeCube;
