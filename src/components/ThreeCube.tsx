@@ -18,14 +18,22 @@ const ThreeCube = () => {
     const geometry = new THREE.BoxGeometry();
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const cube = new THREE.Mesh(geometry, material);
+
     scene.add(cube);
-    camera.position.z = 5;
+    // camera.position.z = 5;
+    camera.position.set(1, 1, 0);
+    cube.position.set(1, 1, -5);
+
+    const axesHelper = new THREE.AxesHelper();
+    axesHelper.position.set(0.5, 0.6, -4);
+    scene.add(axesHelper);
 
     // render loop
     const animate = () => {
       requestAnimationFrame(animate);
       cube.rotation.x += 0.01;
       cube.rotation.y += 0.01;
+
       renderer.render(scene, camera);
     };
     animate();
