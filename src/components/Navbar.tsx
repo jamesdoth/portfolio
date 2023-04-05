@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <header className='fixed w-full bg-gray-800 z-20 top-0'>
+    <header className='fixed w-full bg-gray-800 z-20 top-0 left-0'>
       <nav
         className='container mx-auto px-4 py-2 flex items-center justify-between'
         ref={navRef}

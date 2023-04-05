@@ -32,10 +32,10 @@ const ThreeCube = () => {
 
     // clean up Three.js scene on unmount
     return () => {
-      scene.remove(cube);
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
+      // scene.remove(cube);
+      // geometry.dispose();
+      // material.dispose();
+      // renderer.dispose();
     };
   }, []);
 
